@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:omok/presentation/lobby/lobby_page.dart';
+
+import 'lobby/lobby_page.dart';
 
 class OmokApp extends StatelessWidget {
   const OmokApp({super.key});

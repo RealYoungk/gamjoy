@@ -8,6 +8,6 @@ class LobbyState with _$LobbyState {
   const factory LobbyState({
     @Default(false) bool isLoading,
     @Default(0) int playerCount,
-    @Default([]) List<String> roomList,
+    @Default(<String>[]) List<String> roomList,
   }) = _LobbyState;
 }

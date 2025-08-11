@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:omok/presentation/lobby/lobby_presenter.dart';
+
+import 'lobby_presenter.dart';
+import 'lobby_state.dart';
 
 class LobbyView extends ConsumerWidget {
   const LobbyView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final lobbyState = ref.watch(lobbyNotifierProvider);
-    final onlineCount = ref.watch(onlinePlayerCountProvider);
+    final LobbyState lobbyState = ref.watch(lobbyNotifierProvider);
+    final int onlineCount = ref.watch(onlinePlayerCountProvider);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('오목 로비'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        actions: [
+        actions: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16),
             child: Center(
               child: Text(
                 '접속자: $onlineCount명',
@@ -29,9 +31,9 @@ class LobbyView extends ConsumerWidget {
       body: lobbyState.isLoading
           ? const Center(child: CircularProgressIndicator())
           : Column(
-              children: [
+              children: <Widget>[
                 const Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(20),
                   child: Text(
                     '오목 게임에 오신 것을 환영합니다!',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -42,13 +44,15 @@ class LobbyView extends ConsumerWidget {
                 ElevatedButton.icon(
                   onPressed: () async {
                     try {
-                      await ref.read(lobbyNotifierProvider.notifier).createRoom();
+                      await ref
+                          .read(lobbyNotifierProvider.notifier)
+                          .createRoom();
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('방이 생성되었습니다!')),
                         );
                       }
-                    } catch (e) {
+                    } on Exception catch (e) {
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('방 생성 실패: $e')),
@@ -71,8 +75,8 @@ class LobbyView extends ConsumerWidget {
                         )
                       : ListView.builder(
                           itemCount: lobbyState.roomList.length,
-                          itemBuilder: (context, index) {
-                            final roomName = lobbyState.roomList[index];
+                          itemBuilder: (BuildContext context, int index) {
+                            final String roomName = lobbyState.roomList[index];
                             return Card(
                               margin: const EdgeInsets.symmetric(
                                 horizontal: 16,
@@ -88,13 +92,17 @@ class LobbyView extends ConsumerWidget {
                                           .read(lobbyNotifierProvider.notifier)
                                           .joinRoom(roomName);
                                       if (context.mounted) {
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                          const SnackBar(content: Text('방에 참가했습니다!')),
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text('방에 참가했습니다!'),
+                                          ),
                                         );
                                       }
-                                    } catch (e) {
+                                    } on Exception catch (e) {
                                       if (context.mounted) {
-                                        ScaffoldMessenger.of(context).showSnackBar(
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
                                           SnackBar(content: Text('참가 실패: $e')),
                                         );
                                       }
@@ -115,7 +123,7 @@ class LobbyView extends ConsumerWidget {
             : () async {
                 try {
                   await ref.read(lobbyNotifierProvider.notifier).createRoom();
-                } catch (e) {
+                } on Exception catch (e) {
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('오류 발생: $e')),

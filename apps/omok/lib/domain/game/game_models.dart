@@ -11,7 +11,7 @@ class Position with _$Position {
     required int col,
   }) = _Position;
 
-  factory Position.fromJson(Map<String, dynamic> json) => 
+  factory Position.fromJson(Map<String, dynamic> json) =>
       _$PositionFromJson(json);
 }
 
@@ -39,16 +39,16 @@ class BoardCell with _$BoardCell {
     StoneColor? stone,
   }) = _BoardCell;
 
-  factory BoardCell.fromJson(Map<String, dynamic> json) => 
+  factory BoardCell.fromJson(Map<String, dynamic> json) =>
       _$BoardCellFromJson(json);
 }
 
 /// 게임 상태
 enum GameStatus {
-  waiting,    // 대기 중
-  playing,    // 진행 중  
-  finished,   // 종료
-  paused;     // 일시정지
+  waiting, // 대기 중
+  playing, // 진행 중
+  finished, // 종료
+  paused; // 일시정지
 }
 
 /// 게임 결과
@@ -60,7 +60,7 @@ class GameResult with _$GameResult {
     required DateTime finishedAt,
   }) = _GameResult;
 
-  factory GameResult.fromJson(Map<String, dynamic> json) => 
+  factory GameResult.fromJson(Map<String, dynamic> json) =>
       _$GameResultFromJson(json);
 }
 
@@ -68,15 +68,15 @@ class GameResult with _$GameResult {
 @freezed
 class GameState with _$GameState {
   const factory GameState({
-    @Default([]) List<List<BoardCell?>> board,
+    @Default(<List<BoardCell?>>[]) List<List<BoardCell?>> board,
     @Default(StoneColor.black) StoneColor currentPlayer,
     @Default(GameStatus.waiting) GameStatus status,
-    @Default([]) List<Position> moveHistory,
+    @Default(<Position>[]) List<Position> moveHistory,
     GameResult? result,
     @Default(false) bool isMyTurn,
   }) = _GameState;
 
-  factory GameState.fromJson(Map<String, dynamic> json) => 
+  factory GameState.fromJson(Map<String, dynamic> json) =>
       _$GameStateFromJson(json);
 }
 
@@ -90,6 +90,6 @@ class GameMove with _$GameMove {
     required String playerId,
   }) = _GameMove;
 
-  factory GameMove.fromJson(Map<String, dynamic> json) => 
+  factory GameMove.fromJson(Map<String, dynamic> json) =>
       _$GameMoveFromJson(json);
 }

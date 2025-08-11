@@ -1,21 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:omok/domain/user/user_models.dart';
-import 'package:omok/domain/game/game_models.dart';
+
+import '../game/game_models.dart';
+import '../user/user_models.dart';
 
 part 'room_models.freezed.dart';
 part 'room_models.g.dart';
 
 /// 방 상태
 enum RoomStatus {
-  waiting,    // 대기 중
-  playing,    // 게임 진행 중
-  finished;   // 게임 종료
+  waiting, // 대기 중
+  playing, // 게임 진행 중
+  finished; // 게임 종료
 }
 
 /// 플레이어 역할
 enum PlayerRole {
-  host,      // 방장
-  guest;     // 게스트
+  host, // 방장
+  guest; // 게스트
 }
 
 /// 방에 참가한 플레이어 정보
@@ -29,7 +30,7 @@ class RoomPlayer with _$RoomPlayer {
     @Default(true) bool isReady,
   }) = _RoomPlayer;
 
-  factory RoomPlayer.fromJson(Map<String, dynamic> json) => 
+  factory RoomPlayer.fromJson(Map<String, dynamic> json) =>
       _$RoomPlayerFromJson(json);
 }
 
@@ -44,7 +45,7 @@ class RoomSettings with _$RoomSettings {
     String? password,
   }) = _RoomSettings;
 
-  factory RoomSettings.fromJson(Map<String, dynamic> json) => 
+  factory RoomSettings.fromJson(Map<String, dynamic> json) =>
       _$RoomSettingsFromJson(json);
 }
 
@@ -56,15 +57,15 @@ class GameRoom with _$GameRoom {
     required String name,
     required RoomStatus status,
     required RoomSettings settings,
-    @Default([]) List<RoomPlayer> players,
-    @Default([]) List<User> spectators,
+    @Default(<RoomPlayer>[]) List<RoomPlayer> players,
+    @Default(<User>[]) List<User> spectators,
     required DateTime createdAt,
     DateTime? startedAt,
     DateTime? finishedAt,
     GameState? gameState,
   }) = _GameRoom;
 
-  factory GameRoom.fromJson(Map<String, dynamic> json) => 
+  factory GameRoom.fromJson(Map<String, dynamic> json) =>
       _$GameRoomFromJson(json);
 }
 
@@ -76,7 +77,7 @@ class CreateRoomRequest with _$CreateRoomRequest {
     required RoomSettings settings,
   }) = _CreateRoomRequest;
 
-  factory CreateRoomRequest.fromJson(Map<String, dynamic> json) => 
+  factory CreateRoomRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateRoomRequestFromJson(json);
 }
 
@@ -88,6 +89,6 @@ class JoinRoomRequest with _$JoinRoomRequest {
     String? password,
   }) = _JoinRoomRequest;
 
-  factory JoinRoomRequest.fromJson(Map<String, dynamic> json) => 
+  factory JoinRoomRequest.fromJson(Map<String, dynamic> json) =>
       _$JoinRoomRequestFromJson(json);
 }

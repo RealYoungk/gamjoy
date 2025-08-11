@@ -26,8 +26,7 @@ class User with _$User {
     String? avatarUrl,
   }) = _User;
 
-  factory User.fromJson(Map<String, dynamic> json) => 
-      _$UserFromJson(json);
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }
 
 /// 게임 통계
@@ -43,7 +42,7 @@ class GameStats with _$GameStats {
     required int maxStreak,
   }) = _GameStats;
 
-  factory GameStats.fromJson(Map<String, dynamic> json) => 
+  factory GameStats.fromJson(Map<String, dynamic> json) =>
       _$GameStatsFromJson(json);
 }
 
@@ -53,10 +52,10 @@ class UserProfile with _$UserProfile {
   const factory UserProfile({
     required User user,
     required GameStats stats,
-    @Default([]) List<String> achievements,
+    @Default(<String>[]) List<String> achievements,
     DateTime? createdAt,
   }) = _UserProfile;
 
-  factory UserProfile.fromJson(Map<String, dynamic> json) => 
+  factory UserProfile.fromJson(Map<String, dynamic> json) =>
       _$UserProfileFromJson(json);
 }

@@ -8,49 +8,30 @@ environment:
   flutter: '>=3.0.0'
 
 dependencies:
+  cupertino_icons: ^1.0.8
+  dio:
   flutter:
     sdk: flutter
-  
-  # Core Package
-  core:
-    path: ../../packages/core
-
-  # State Management - melos에서 버전 관리
   flutter_riverpod:
-  riverpod_annotation:
-  # Dependency Injection - melos에서 버전 관리
+  freezed_annotation:
   get_it:
   injectable:
-
-  # Networking - melos에서 버전 관리
-  dio:
-  web_socket_channel:
-  
-  # Data Modeling - melos에서 버전 관리
-  freezed_annotation:
   json_annotation:
-  
-  # UI
-  cupertino_icons: ^1.0.8
+  riverpod_annotation:
+  web_socket_channel:
 
 dev_dependencies:
+  build_runner:
+  flutter_lints:
   flutter_test:
     sdk: flutter
-  
-  # Linting - melos에서 버전 관리
-  flutter_lints:
-  
-  # Code Generation - melos에서 버전 관리
-  build_runner:
-  injectable_generator:
-  riverpod_generator:
   freezed:
-  json_serializable:
-  retrofit_generator:
   hive_generator:
-  
-  # Testing - melos에서 버전 관리
+  injectable_generator:
+  json_serializable:
   mocktail:
+  retrofit_generator:
+  riverpod_generator:
 
 flutter:
   uses-material-design: true
