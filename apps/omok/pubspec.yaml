@@ -1,0 +1,55 @@
+name: omok
+description: 오목 게임 애플리케이션
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Core Package
+  core:
+    path: ../../packages/core
+  
+  # State Management - melos에서 버전 관리
+  flutter_riverpod:
+  riverpod_annotation:
+  
+  # Dependency Injection - melos에서 버전 관리
+  get_it:
+  injectable:
+  
+  # Networking - melos에서 버전 관리
+  dio:
+  web_socket_channel:
+  
+  # Data Modeling - melos에서 버전 관리
+  freezed_annotation:
+  json_annotation:
+  
+  # UI
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  # Linting - melos에서 버전 관리
+  flutter_lints:
+  
+  # Code Generation - melos에서 버전 관리
+  build_runner:
+  injectable_generator:
+  riverpod_generator:
+  freezed:
+  json_serializable:
+  
+  # Testing - melos에서 버전 관리
+  mocktail:
+
+flutter:
+  uses-material-design: true
