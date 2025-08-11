@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:omok/presentation/lobby/lobby_provider.dart';
+import 'package:omok/presentation/lobby/lobby_presenter.dart';
 
 class LobbyView extends ConsumerWidget {
   const LobbyView({super.key});
