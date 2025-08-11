@@ -1,0 +1,75 @@
+name: gamjoy
+
+packages:
+  - packages/**
+  - apps/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
+# 공통 라이브러리 버전 관리
+dependencies:
+  # State Management
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  
+  # Data Modeling
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+  
+  # Dependency Injection
+  get_it: ^8.2.0
+  injectable: ^2.5.1
+  
+  # Networking
+  dio: ^5.9.0
+  retrofit: ^8.2.1
+  web_socket_channel: ^3.0.3
+  
+  # Database
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+dev_dependencies:
+  # Code Generation
+  build_runner: ^2.6.1
+  freezed: ^2.5.7
+  json_serializable: ^6.8.0
+  riverpod_generator: ^2.6.5
+  injectable_generator: ^2.8.1
+  retrofit_generator: ^8.2.1
+  hive_generator: ^2.0.2
+  
+  # Testing
+  mocktail: ^1.0.4
+  
+  # Linting
+  flutter_lints: ^6.0.0
+
+scripts:
+  analyze:
+    run: flutter analyze --fatal-infos
+    description: Run static analysis on all packages
+
+  format:
+    run: dart format --set-exit-if-changed .
+    description: Format all packages
+
+  test:
+    run: flutter test
+    description: Run all tests
+
+  build:
+    run: flutter build apk
+    description: Build APK for all apps
+    exec:
+      concurrency: 1
+
+  clean:
+    run: flutter clean
+    description: Clean all packages
+
+  get:
+    run: flutter pub get
+    description: Get dependencies for all packages
