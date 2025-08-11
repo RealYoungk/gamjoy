@@ -1,10 +1,6 @@
-library core;
-
-// Domain
-export 'domain/domain.dart';
-
 // Data
 export 'data/data.dart';
-
+// Domain
+export 'domain/domain.dart';
 // Presentation
 export 'presentation/presentation.dart';

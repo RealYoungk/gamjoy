@@ -17,10 +17,11 @@ class LobbyNotifier extends _$LobbyNotifier {
     state = state.copyWith(isLoading: true);
 
     try {
-      // TODO: 실제 방 생성 로직 구현
+      // TODO(youngjin.kim): 실제 방 생성 로직 구현
       await Future<void>.delayed(const Duration(seconds: 1));
 
-      final newRoomList = List<String>.from(state.roomList)..add('새로운 방');
+      final List<String> newRoomList = List<String>.from(state.roomList)
+        ..add('새로운 방');
       state = state.copyWith(
         isLoading: false,
         roomList: newRoomList,
@@ -36,7 +37,7 @@ class LobbyNotifier extends _$LobbyNotifier {
     state = state.copyWith(isLoading: true);
 
     try {
-      // TODO: 실제 방 참가 로직 구현
+      // TODO(youngjin.kim): 실제 방 참가 로직 구현
       await Future<void>.delayed(const Duration(seconds: 1));
 
       state = state.copyWith(isLoading: false);
@@ -55,6 +56,6 @@ class LobbyNotifier extends _$LobbyNotifier {
 /// 현재 접속 플레이어 수를 제공하는 Provider
 @riverpod
 int onlinePlayerCount(OnlinePlayerCountRef ref) {
-  // TODO: 실제 서버에서 플레이어 수 가져오기
+  // TODO(youngjin.kim): 실제 서버에서 플레이어 수 가져오기
   return 42;
 }
