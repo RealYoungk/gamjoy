@@ -14,15 +14,14 @@ dependencies:
   # Core Package
   core:
     path: ../../packages/core
-  
+
   # State Management - melos에서 버전 관리
   flutter_riverpod:
   riverpod_annotation:
-  
   # Dependency Injection - melos에서 버전 관리
   get_it:
   injectable:
-  
+
   # Networking - melos에서 버전 관리
   dio:
   web_socket_channel:
@@ -47,6 +46,8 @@ dev_dependencies:
   riverpod_generator:
   freezed:
   json_serializable:
+  retrofit_generator:
+  hive_generator:
   
   # Testing - melos에서 버전 관리
   mocktail:
